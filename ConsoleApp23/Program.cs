@@ -8,23 +8,24 @@ namespace ConsoleApp23
         {
             Console.WriteLine("Введите текст");
             int count = 0;
-            string text = Console.ReadLine();
-            string[] words = text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < words.Length; i++)
+            string text = Console.ReadLine(); //вводимый текст
+            string[] words = text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries); //разьитие текста на слова
+            for (int i = 1; i < words.Length - 1; i++)
             {
                 count++;
-                if (i % 2 == 0)
+                if (i % 2 == 1) //проверка на четность
                 {
-                    char[] array = words[i].ToCharArray();
-                    Array.Reverse(array);
-                    words[i] = string.Join("", array);
+                    char[] array = words[i].ToCharArray(); //разбивка слова на буквы
+                    Array.Reverse(array); // переворот массива
+                    words[i] = string.Join("", array); //сборка массива
                 }
             }
             if(count > 6)
             {
-                Console.WriteLine($"Слишком много словв введено: {count}");
+                Console.WriteLine($"Слишком много слов введено: {count}");
+                Console.WriteLine($"Количество лишних слов: {count - 6}");
             }
-            string alltext = string.Join(' ', words);
+            string alltext = string.Join(' ', words); // сборка полного текста
             Console.WriteLine(alltext);
         }
     }
